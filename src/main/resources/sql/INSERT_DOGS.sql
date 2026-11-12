@@ -1,0 +1,46 @@
+INSERT INTO dog (
+    name,
+    breed,
+    birth_date,
+    sex,
+    weight,
+    photo_url,
+    created_at
+)
+VALUES
+(
+    'Nala',
+    'GOLDEN_RETRIVEVER',
+    '2025-06-15',
+    'FEMALE',
+    12.50,
+    'https://example.com/nala.jpg',
+    CURRENT_TIMESTAMP
+),
+(
+    'Max',
+    'GERMAN_SHEPARD',
+    '2024-03-10',
+    'MALE',
+    32.80,
+    'https://example.com/max.jpg',
+    CURRENT_TIMESTAMP
+),
+(
+    'Luna',
+    'GOLDEN_RETRIVEVER',
+    '2026-01-20',
+    'FEMALE',
+    8.40,
+    'https://example.com/luna.jpg',
+    CURRENT_TIMESTAMP
+),
+(
+    'Rocky',
+    'GERMAN_SHEPARD',
+    '2023-09-05',
+    'MALE',
+    35.20,
+    'https://example.com/rocky.jpg',
+    CURRENT_TIMESTAMP
+);
