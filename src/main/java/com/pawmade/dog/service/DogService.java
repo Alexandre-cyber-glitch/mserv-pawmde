@@ -9,6 +9,8 @@ import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
+import java.util.List;
+
 @Service
 @RequiredArgsConstructor
 public class DogService {
@@ -33,5 +35,9 @@ public class DogService {
         dogMapper.update(request, dog);
         var savedDog = dogRepository.save(dog);
         return dogMapper.toResponse(savedDog);
+    }
+
+    public List<DogResponse> findAll() {
+        return dogRepository.findAll().stream().map(dogMapper::toResponse).toList();
     }
 }

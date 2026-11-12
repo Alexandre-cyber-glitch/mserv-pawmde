@@ -10,6 +10,8 @@ import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
+import java.util.List;
+
 @RestController
 @RequestMapping("/api/dogs")
 @RequiredArgsConstructor
@@ -26,5 +28,10 @@ public class DogController {
     @PutMapping("/{id}")
     public ResponseEntity<DogResponse> update(@PathVariable Long id, @Valid @RequestBody DogUpdateRequest request) {
         return ResponseEntity.ok(dogService.update(id, request));
+    }
+
+    @GetMapping
+    public ResponseEntity<List<DogResponse>> findAll() {
+        return ResponseEntity.ok((dogService.findAll()));
     }
 }
