@@ -1,4 +1,4 @@
-package com.pawmade.dog.constante;
+package com.pawmade.living.constante;
 
 public enum Sex {
     MALE,

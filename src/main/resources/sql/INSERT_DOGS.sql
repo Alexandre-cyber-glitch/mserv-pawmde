@@ -1,46 +1,8 @@
-INSERT INTO dog (
-    name,
-    breed,
-    birth_date,
-    sex,
-    weight,
-    photo_url,
-    created_at
-)
+INSERT INTO dog (name, photo_url, created_at, birth_date, sex, weight, breed, type)
 VALUES
-(
-    'Nala',
-    'GOLDEN_RETRIVEVER',
-    '2025-06-15',
-    'FEMALE',
-    12.50,
-    'https://example.com/nala.jpg',
-    CURRENT_TIMESTAMP
-),
-(
-    'Max',
-    'GERMAN_SHEPARD',
-    '2024-03-10',
-    'MALE',
-    32.80,
-    'https://example.com/max.jpg',
-    CURRENT_TIMESTAMP
-),
-(
-    'Luna',
-    'GOLDEN_RETRIVEVER',
-    '2026-01-20',
-    'FEMALE',
-    8.40,
-    'https://example.com/luna.jpg',
-    CURRENT_TIMESTAMP
-),
-(
-    'Rocky',
-    'GERMAN_SHEPARD',
-    '2023-09-05',
-    'MALE',
-    35.20,
-    'https://example.com/rocky.jpg',
-    CURRENT_TIMESTAMP
-);
+    ('Warn Waffle', 'https://example.com/nala.jpg', CURRENT_TIMESTAMP,
+     '2025-06-15', 'MALE', 12.50, 'GOLDEN_RETRIVEVER', 'DOG');
+INSERT INTO plant (name, photo_url, created_at, acquisition_date, species, watering_frequency_days, type)
+VALUES
+    ('Albert', 'https://example.com/monstera.jpg', CURRENT_TIMESTAMP,
+     '2025-08-10', 'Monstera Deliciosa', 7, 'PLANT');
