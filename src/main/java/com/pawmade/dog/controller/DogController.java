@@ -34,4 +34,10 @@ public class DogController {
     public ResponseEntity<List<DogResponse>> findAll() {
         return ResponseEntity.ok((dogService.findAll()));
     }
+
+    @DeleteMapping("/{id}")
+    public ResponseEntity<Void> delete(@PathVariable Long id) {
+        dogService.delete(id);
+        return ResponseEntity.noContent().build();
+    }
 }

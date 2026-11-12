@@ -40,4 +40,8 @@ public class DogService {
     public List<DogResponse> findAll() {
         return dogRepository.findAll().stream().map(dogMapper::toResponse).toList();
     }
+
+    public void delete(Long id) {
+        dogRepository.deleteById(id);
+    }
 }
