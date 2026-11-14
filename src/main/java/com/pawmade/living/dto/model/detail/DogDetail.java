@@ -1,4 +1,4 @@
-package com.pawmade.living.dto.model;
+package com.pawmade.living.dto.model.detail;
 
 import com.pawmade.living.constante.Breed;
 import com.pawmade.living.constante.Sex;
@@ -7,14 +7,13 @@ import com.pawmade.living.constante.Type;
 import java.math.BigDecimal;
 import java.time.LocalDate;
 
-public record Dog(
-        Long id,
-        String name,
-        Breed breed,
+public record DogDetail(
+        Long id, String name,
+        String photoUrl,
+        Type type,
         LocalDate birthDate,
         Sex sex,
         BigDecimal weight,
-        String photoUrl,
-        Type type
-) implements Living {
+        Breed breed
+) implements LivingDetail {
 }

@@ -1,15 +1,17 @@
 package com.pawmade.living.dto.mapper;
 
-import com.pawmade.living.dto.model.Dog;
-import com.pawmade.living.dto.model.Living;
-import com.pawmade.living.dto.model.Plant;
+import com.pawmade.living.dto.model.detail.DogDetail;
+import com.pawmade.living.dto.model.detail.LivingDetail;
+import com.pawmade.living.dto.model.detail.PlantDetail;
+import com.pawmade.living.dto.model.summary.LivingSummary;
 import com.pawmade.living.entity.DogEntity;
 import com.pawmade.living.entity.LivingEntity;
 import com.pawmade.living.entity.PlantEntity;
 import org.mapstruct.Mapper;
-import org.mapstruct.Mapping;
 import org.mapstruct.SubclassExhaustiveStrategy;
 import org.mapstruct.SubclassMapping;
+
+import java.util.List;
 
 @Mapper(
         componentModel = "spring",
@@ -17,19 +19,15 @@ import org.mapstruct.SubclassMapping;
 )
 public interface LivingMapper {
 
-    @SubclassMapping(source = DogEntity.class, target = Dog.class)
-    @SubclassMapping(source = PlantEntity.class, target = Plant.class)
-    Living toDto(LivingEntity entity);
+    LivingSummary toSummary(LivingEntity entity);
 
-    @Mapping(target = "id", source = "id")
-    @Mapping(target = "name", source = "name")
-    @Mapping(target = "photoUrl", source = "photoUrl")
-    @Mapping(target = "type", constant = "DOG")
-    Dog toDto(DogEntity entity);
+    List<LivingSummary> toSummaries(List<LivingEntity> entities);
 
-    @Mapping(target = "id", source = "id")
-    @Mapping(target = "name", source = "name")
-    @Mapping(target = "photoUrl", source = "photoUrl")
-    @Mapping(target = "type", constant = "PLANT")
-    Plant toDto(PlantEntity entity);
+    @SubclassMapping(source = DogEntity.class, target = DogDetail.class)
+    @SubclassMapping(source = PlantEntity.class, target = PlantDetail.class)
+    LivingDetail toDetail(LivingEntity entity);
+
+    DogDetail toDetail(DogEntity entity);
+
+    PlantDetail toDetail(PlantEntity entity);
 }

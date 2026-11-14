@@ -1,5 +1,6 @@
 package com.pawmade.living.entity;
 
+import com.pawmade.living.constante.Type;
 import jakarta.persistence.*;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
@@ -8,10 +9,13 @@ import lombok.Setter;
 import java.time.LocalDateTime;
 
 
+@Entity
+@Table(name = "living")
+@Inheritance(strategy = InheritanceType.JOINED)
+@DiscriminatorColumn(name = "type")
 @Getter
 @Setter
 @NoArgsConstructor
-@MappedSuperclass
 public abstract class LivingEntity {
 
     @Id
@@ -23,6 +27,11 @@ public abstract class LivingEntity {
 
     private String photoUrl;
 
+    @Enumerated(EnumType.STRING)
+    @Column(name = "type", insertable = false, updatable = false)
+    private Type type;
+
+    @Column(nullable = false, updatable = false)
     private LocalDateTime createdAt;
 
     @PrePersist
