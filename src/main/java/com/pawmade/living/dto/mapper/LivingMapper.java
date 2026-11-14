@@ -21,9 +21,15 @@ public interface LivingMapper {
     @SubclassMapping(source = PlantEntity.class, target = Plant.class)
     Living toDto(LivingEntity entity);
 
+    @Mapping(target = "id", source = "id")
+    @Mapping(target = "name", source = "name")
+    @Mapping(target = "photoUrl", source = "photoUrl")
     @Mapping(target = "type", constant = "DOG")
     Dog toDto(DogEntity entity);
 
+    @Mapping(target = "id", source = "id")
+    @Mapping(target = "name", source = "name")
+    @Mapping(target = "photoUrl", source = "photoUrl")
     @Mapping(target = "type", constant = "PLANT")
     Plant toDto(PlantEntity entity);
 }
