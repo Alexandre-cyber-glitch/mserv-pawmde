@@ -12,4 +12,9 @@ public class GlobalExceptionHandler {
     public ProblemDetail handleNotFound(LivingNotFoundException ex) {
         return ProblemDetail.forStatusAndDetail(HttpStatus.NOT_FOUND, ex.getMessage());
     }
+
+    @ExceptionHandler(LivingTypeMismatchException.class)
+    public ProblemDetail handleTypeMismatch(LivingTypeMismatchException ex) {
+        return ProblemDetail.forStatusAndDetail(HttpStatus.BAD_REQUEST, ex.getMessage());
+    }
 }

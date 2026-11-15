@@ -1,13 +1,20 @@
 package com.pawmade.living.service;
 
 import com.pawmade.living.dto.mapper.LivingMapper;
+import com.pawmade.living.dto.request.UpdateDogRequest;
+import com.pawmade.living.dto.request.UpdateLivingRequest;
+import com.pawmade.living.dto.request.UpdatePlantRequest;
 import com.pawmade.living.dto.response.GetLivingDetailResponse;
 import com.pawmade.living.dto.response.GetLivingListResponse;
+import com.pawmade.living.entity.DogEntity;
+import com.pawmade.living.entity.PlantEntity;
 import com.pawmade.living.exception.LivingNotFoundException;
+import com.pawmade.living.exception.LivingTypeMismatchException;
 import com.pawmade.living.repository.LivingRepository;
 import lombok.RequiredArgsConstructor;
 import org.springframework.data.domain.Sort;
 import org.springframework.stereotype.Service;
+import org.springframework.transaction.annotation.Transactional;
 
 @Service
 @RequiredArgsConstructor
@@ -23,6 +30,19 @@ public class LivingService {
 
     public GetLivingDetailResponse findById(Long id) {
         var entity = livingRepository.findById(id).orElseThrow(() -> new LivingNotFoundException(id));
+        return new GetLivingDetailResponse(livingMapper.toDetail(entity));
+    }
+
+    @Transactional
+    public GetLivingDetailResponse update(Long id, UpdateLivingRequest request) {
+        var entity = livingRepository.findById(id).orElseThrow(() -> new LivingNotFoundException(id));
+        if (request instanceof UpdateDogRequest dogRequest && entity instanceof DogEntity dog) {
+            livingMapper.update(dogRequest, dog);
+        } else if (request instanceof UpdatePlantRequest plantRequest && entity instanceof PlantEntity plant) {
+            livingMapper.update(plantRequest, plant);
+        } else {
+            throw new LivingTypeMismatchException(id, entity.getType());
+        }
         return new GetLivingDetailResponse(livingMapper.toDetail(entity));
     }
 }

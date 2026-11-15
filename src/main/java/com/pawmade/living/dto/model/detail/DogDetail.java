@@ -1,8 +1,8 @@
 package com.pawmade.living.dto.model.detail;
 
-import com.pawmade.living.constante.Breed;
-import com.pawmade.living.constante.Sex;
-import com.pawmade.living.constante.Type;
+import com.pawmade.living.constant.Breed;
+import com.pawmade.living.constant.Sex;
+import com.pawmade.living.constant.Type;
 
 import java.math.BigDecimal;
 import java.time.LocalDate;

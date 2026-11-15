@@ -1,15 +1,14 @@
 package com.pawmade.living.controller;
 
 
+import com.pawmade.living.dto.request.UpdateLivingRequest;
 import com.pawmade.living.dto.response.GetLivingDetailResponse;
 import com.pawmade.living.dto.response.GetLivingListResponse;
 import com.pawmade.living.service.LivingService;
+import jakarta.validation.Valid;
 import lombok.RequiredArgsConstructor;
 import org.springframework.http.ResponseEntity;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.PathVariable;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.*;
 
 @RestController
 @RequestMapping("/api/living")
@@ -28,5 +27,8 @@ public class LivingController {
         return ResponseEntity.ok(livingService.findById(id));
     }
 
-
+    @PutMapping("/{id}")
+    public ResponseEntity<GetLivingDetailResponse> update(@PathVariable Long id, @Valid @RequestBody UpdateLivingRequest request) {
+        return ResponseEntity.ok(livingService.update(id, request));
+    }
 }

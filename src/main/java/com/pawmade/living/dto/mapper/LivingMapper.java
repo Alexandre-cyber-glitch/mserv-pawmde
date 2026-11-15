@@ -4,12 +4,12 @@ import com.pawmade.living.dto.model.detail.DogDetail;
 import com.pawmade.living.dto.model.detail.LivingDetail;
 import com.pawmade.living.dto.model.detail.PlantDetail;
 import com.pawmade.living.dto.model.summary.LivingSummary;
+import com.pawmade.living.dto.request.UpdateDogRequest;
+import com.pawmade.living.dto.request.UpdatePlantRequest;
 import com.pawmade.living.entity.DogEntity;
 import com.pawmade.living.entity.LivingEntity;
 import com.pawmade.living.entity.PlantEntity;
-import org.mapstruct.Mapper;
-import org.mapstruct.SubclassExhaustiveStrategy;
-import org.mapstruct.SubclassMapping;
+import org.mapstruct.*;
 
 import java.util.List;
 
@@ -30,4 +30,14 @@ public interface LivingMapper {
     DogDetail toDetail(DogEntity entity);
 
     PlantDetail toDetail(PlantEntity entity);
+
+    @Mapping(target = "id", ignore = true)
+    @Mapping(target = "type", ignore = true)
+    @Mapping(target = "createdAt", ignore = true)
+    void update(UpdateDogRequest request, @MappingTarget DogEntity entity);
+
+    @Mapping(target = "id", ignore = true)
+    @Mapping(target = "type", ignore = true)
+    @Mapping(target = "createdAt", ignore = true)
+    void update(UpdatePlantRequest request, @MappingTarget PlantEntity entity);
 }

@@ -1,6 +1,6 @@
 package com.pawmade.living.dto.model.detail;
 
-import com.pawmade.living.constante.Type;
+import com.pawmade.living.constant.Type;
 
 import java.time.LocalDate;
 

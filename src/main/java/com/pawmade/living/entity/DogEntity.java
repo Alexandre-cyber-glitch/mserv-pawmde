@@ -1,6 +1,6 @@
 package com.pawmade.living.entity;
 
-import com.pawmade.living.constante.Breed;
+import com.pawmade.living.constant.Breed;
 import jakarta.persistence.*;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
