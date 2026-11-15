@@ -25,4 +25,6 @@ public class LivingService {
         var entity = livingRepository.findById(id).orElseThrow(() -> new LivingNotFoundException(id));
         return new GetLivingDetailResponse(livingMapper.toDetail(entity));
     }
+
+    //public void update
 }

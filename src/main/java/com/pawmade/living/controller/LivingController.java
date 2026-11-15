@@ -27,4 +27,6 @@ public class LivingController {
     public ResponseEntity<GetLivingDetailResponse> findById(@PathVariable Long id) {
         return ResponseEntity.ok(livingService.findById(id));
     }
+
+
 }
