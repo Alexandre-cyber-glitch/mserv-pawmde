@@ -25,7 +25,9 @@ public abstract class LivingEntity {
     @Column(nullable = false)
     private String name;
 
-    private String photoUrl;
+    private String avatarUrl;
+
+    private String coverUrl;
 
     @Enumerated(EnumType.STRING)
     @Column(name = "type", insertable = false, updatable = false)

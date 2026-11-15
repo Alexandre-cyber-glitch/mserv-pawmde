@@ -12,5 +12,7 @@ public class WebConfig implements WebMvcConfigurer {
         registry.addMapping("/api/**")
                 .allowedOriginPatterns("http://localhost:*", "http://127.0.0.1:*")
                 .allowedMethods("GET", "POST", "PUT", "PATCH", "DELETE", "OPTIONS");
+        registry.addMapping("/avatar/**").allowedOriginPatterns("http://localhost:*", "http://127.0.0.1:*");
+        registry.addMapping("/cover/**").allowedOriginPatterns("http://localhost:*", "http://127.0.0.1:*");
     }
 }

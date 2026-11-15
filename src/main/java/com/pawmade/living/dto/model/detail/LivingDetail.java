@@ -5,6 +5,7 @@ import com.pawmade.living.constante.Type;
 public sealed interface LivingDetail permits DogDetail, PlantDetail {
     Long id();
     String name();
-    String photoUrl();
+    String avatarUrl();
+    String coverUrl();
     Type type();
 }

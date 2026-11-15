@@ -5,7 +5,7 @@ import com.pawmade.living.constante.Type;
 public record LivingSummary(
         Long id,
         String name,
-        String photoUrl,
+        String avatarUrl,
         Type type
 ) {
 }

@@ -9,7 +9,8 @@ import java.time.LocalDate;
 
 public record DogDetail(
         Long id, String name,
-        String photoUrl,
+        String coverUrl,
+        String avatarUrl,
         Type type,
         LocalDate birthDate,
         Sex sex,

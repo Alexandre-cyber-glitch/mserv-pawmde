@@ -7,7 +7,8 @@ import java.time.LocalDate;
 public record PlantDetail(
         Long id,
         String name,
-        String photoUrl,
+        String avatarUrl,
+        String coverUrl,
         Type type,
         String species,
         LocalDate acquisitionDate,
