@@ -1,6 +1,7 @@
 package com.pawmade.living.entity;
 
 import com.pawmade.living.constant.Type;
+import com.pawmade.photo.entity.PhotoEntity;
 import jakarta.persistence.*;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
@@ -25,9 +26,13 @@ public abstract class LivingEntity {
     @Column(nullable = false)
     private String name;
 
-    private String avatarUrl;
+    @ManyToOne(fetch = FetchType.LAZY)
+    @JoinColumn(name = "avatar_photo_id")
+    private PhotoEntity avatarPhoto;
 
-    private String coverUrl;
+    @ManyToOne(fetch = FetchType.LAZY)
+    @JoinColumn(name = "cover_photo_id")
+    private PhotoEntity coverPhoto;
 
     @Enumerated(EnumType.STRING)
     @Column(name = "type", insertable = false, updatable = false)
