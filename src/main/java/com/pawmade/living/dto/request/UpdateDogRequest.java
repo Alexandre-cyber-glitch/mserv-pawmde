@@ -12,8 +12,6 @@ public record UpdateDogRequest(
         @PastOrPresent LocalDate birthDate,
         Sex sex,
         @Positive @Digits(integer = 3, fraction = 2) BigDecimal weight,
-        Breed breed,
-        @Pattern(regexp = "^(/|https?://).*") String avatarUrl,
-        @Pattern(regexp = "^(/|https?://).*") String coverUrl
+        Breed breed
 ) implements UpdateLivingRequest {
 }
