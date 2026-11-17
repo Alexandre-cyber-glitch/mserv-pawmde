@@ -2,12 +2,14 @@ package com.pawmade;
 
 import com.pawmade.living.exception.LivingNotFoundException;
 import com.pawmade.living.exception.LivingTypeMismatchException;
+import com.pawmade.photo.exception.InvalidPhotoException;
 import com.pawmade.photo.exception.PhotoNotFoundException;
 import com.pawmade.photo.exception.StorageException;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ProblemDetail;
 import org.springframework.web.bind.annotation.ExceptionHandler;
 import org.springframework.web.bind.annotation.RestControllerAdvice;
+import org.springframework.web.multipart.MaxUploadSizeExceededException;
 
 @RestControllerAdvice
 public class GlobalExceptionHandler {
@@ -30,5 +32,15 @@ public class GlobalExceptionHandler {
     @ExceptionHandler(StorageException.class)
     public ProblemDetail handleStorage(StorageException ex) {
         return ProblemDetail.forStatusAndDetail(HttpStatus.INTERNAL_SERVER_ERROR, ex.getMessage());
+    }
+
+    @ExceptionHandler(InvalidPhotoException.class)
+    public ProblemDetail handleInvalidPhoto(InvalidPhotoException ex) {
+        return ProblemDetail.forStatusAndDetail(HttpStatus.BAD_REQUEST, ex.getMessage());
+    }
+
+    @ExceptionHandler(MaxUploadSizeExceededException.class)
+    public ProblemDetail handleTooLarge(MaxUploadSizeExceededException ex) {
+        return ProblemDetail.forStatusAndDetail(HttpStatus.CONTENT_TOO_LARGE, "File too large (max 10 MB)");
     }
 }

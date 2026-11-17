@@ -1,7 +1,8 @@
-package com.pawmade.photo.model;
+package com.pawmade.photo.utils;
 
 import com.pawmade.photo.exception.InvalidPhotoException;
 import com.pawmade.photo.exception.StorageException;
+import com.pawmade.photo.model.ImageType;
 import org.springframework.web.multipart.MultipartFile;
 
 import javax.imageio.ImageIO;

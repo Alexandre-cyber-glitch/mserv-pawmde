@@ -7,6 +7,7 @@ import com.pawmade.photo.dto.PhotoResponse;
 import com.pawmade.photo.entity.PhotoEntity;
 import com.pawmade.photo.exception.InvalidPhotoException;
 import com.pawmade.photo.exception.PhotoNotFoundException;
+import com.pawmade.photo.exception.StorageException;
 import com.pawmade.photo.model.PhotoContent;
 import com.pawmade.photo.repository.PhotoRepository;
 import lombok.RequiredArgsConstructor;
@@ -14,10 +15,11 @@ import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 import org.springframework.web.multipart.MultipartFile;
 
+import java.io.IOException;
 import java.util.UUID;
 
-import static com.pawmade.photo.model.utils.detectType;
-import static com.pawmade.photo.model.utils.readDimensions;
+import static com.pawmade.photo.utils.utils.detectType;
+import static com.pawmade.photo.utils.utils.readDimensions;
 
 @Service
 @RequiredArgsConstructor
@@ -46,6 +48,12 @@ public class PhotoService {
         var type = detectType(file);
         var key = "photo/" + UUID.randomUUID() + "/original." + type.extension();
         var dimension = readDimensions(file);
+
+        try (var in = file.getInputStream()) {
+            storageService.store(key, in);
+        } catch (IOException e) {
+            throw new StorageException("Cannot read uploaded file", e);
+        }
 
         try {
             var photo = new PhotoEntity();
