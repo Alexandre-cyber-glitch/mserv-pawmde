@@ -46,7 +46,7 @@ public class PhotoService {
         var living = livingRepository.findById(livingId).orElseThrow(() -> new LivingNotFoundException(livingId));
 
         var type = detectType(file);
-        var key = "photo" + UUID.randomUUID() + "/original." + type.extension();
+        var key = "photo/" + UUID.randomUUID() + "/original." + type.extension();
         var dimension = readDimensions(file);
 
         try (var in = file.getInputStream()) {
